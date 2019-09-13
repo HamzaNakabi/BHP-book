@@ -34,11 +34,10 @@ class Netcat:
     # this handles incoming client connections
     def client_handler(self, client_socket):
         global upload
-        global execute
         global command
 
         # check for upload
-        if len(upload_destination):
+        if len(self.upload_destination):
 
             # read in all of the bytes and write to our destination
             file_buffer = ""
@@ -64,7 +63,7 @@ class Netcat:
                 client_socket.send("Failed to save file to %s\r\n" % upload_destination)
 
         # check for command execution
-        if len(execute):
+        if len(self.execute):
             # run the command
             output = self.run_command(execute)
 
